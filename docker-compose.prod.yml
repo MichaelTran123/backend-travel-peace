@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production  # Specify the production stage
+    container_name: nestjs-app-prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: always  # Automatically restart the container in production
+    user: "node"  # Run as non-root user
